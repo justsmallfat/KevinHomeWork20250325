@@ -1,0 +1,27 @@
+# 來自 Android Studio 的檔案
+.gradle/
+.local/
+.cxx/
+.externalNativeBuild/
+
+# Gradle 相關
+/.gradle
+/build/
+captures/
+outputs/
+*.apk
+*.aab
+
+# 環境設定
+local.properties
+*.keystore
+
+# IDE 設定
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Mac/Windows/Linux 系統檔案
+.DS_Store
+Thumbs.db
