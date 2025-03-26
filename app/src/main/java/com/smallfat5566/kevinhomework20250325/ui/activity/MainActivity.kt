@@ -1,4 +1,4 @@
-package com.smallfat5566.kevinhomework20250325
+package com.smallfat5566.kevinhomework20250325.ui.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
