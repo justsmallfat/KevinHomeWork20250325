@@ -1,10 +1,21 @@
 package com.smallfat5566.kevinhomework20250325.network
 
 import android.content.Context
+import android.util.Log
+import android.widget.Toast
+import com.google.gson.Gson
+import com.google.gson.JsonSyntaxException
+import com.smallfat5566.kevinhomework20250325.models.StockMetrics
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import org.json.JSONException
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.math.BigInteger
 import java.security.MessageDigest
+import java.util.concurrent.TimeUnit
 
 class ExchangeReportWebService (context: Context,
                                 showProgressDialog: Boolean = true
@@ -14,37 +25,67 @@ class ExchangeReportWebService (context: Context,
     private val url_STOCK_DAY_AVG_ALL = (Protocol + domainName + prefix + "STOCK_DAY_AVG_ALL")
     private val url_STOCK_DAY_ALL = (Protocol + domainName + prefix + "STOCK_DAY_ALL")
 
-    @Throws(Exception::class)
-    suspend fun getBWIBBU_ALL(): List<> = withContext(Dispatchers.IO) {
-        var response: String = ""
-        val postDataParams = HashMap<String, Any?>()
-        postDataParams["accountID"] = accountID
 
-        // 密碼MD5
-        val md = MessageDigest.getInstance("MD5")
-        val md5Password = BigInteger(1, md.digest(password.toByteArray())).toString(16).padStart(32, '0')
 
-        postDataParams["password"] = md5Password
-        postDataParams["accountName"] = accountName
-        postDataParams["email"] = email
-        postDataParams["gender"] = gender
-        response = postConnection(postDataParams, url_register)
-        return@withContext response
+    suspend fun getAllStockMetrics(): ApiService = withContext(Dispatchers.IO) {
+        // 設定 OkHttpClient
+        val loggingInterceptor = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
+
+        val okHttpClient = OkHttpClient.Builder()
+            .addInterceptor(loggingInterceptor) // 記錄請求與回應
+            .connectTimeout(30, TimeUnit.SECONDS) // 設定連線超時
+            .readTimeout(30, TimeUnit.SECONDS)
+            .writeTimeout(30, TimeUnit.SECONDS)
+            .build()
+
+        // 設定 Retrofit
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://jsonplaceholder.typicode.com/") // 替換為你的 API 網址
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create()) // 自動解析 JSON
+            .build()
+
+        // 創建 API 服務
+        val apiService = retrofit.create(ApiService::class.java)
+        return@withContext apiService
     }
 
-    @Throws(Exception::class)
-    suspend fun login(accountID: String,
-                      password: String): String = withContext(Dispatchers.IO) {
-        var response: String = ""
-        val postDataParams = HashMap<String, Any?>()
-        postDataParams["accountID"] = accountID
 
-        // 密碼MD5
-        val md = MessageDigest.getInstance("MD5")
-        val md5Password = BigInteger(1, md.digest(password.toByteArray())).toString(16).padStart(32, '0')
-
-        postDataParams["password"] = md5Password
-        response = postConnection(postDataParams, url_login)
-        return@withContext response
-    }
+//    @Throws(Exception::class)
+//    suspend fun getStockMetricsALL(): List<StockMetrics>? = withContext(Dispatchers.IO) {
+//        var response: List<StockMetrics>? = null
+//        val postDataParams = HashMap<String, Any?>()
+//
+//
+//        try {
+//
+//
+//            response = postConnection(postDataParams, url_register)
+//        }catch (jsonException: JSONException){
+//            SimpleErrorHandleUtils.jsonExceptionHandle(actContext, jsonException)
+//        }catch (jsonSyntaxException: JsonSyntaxException){
+//            SimpleErrorHandleUtils.jsonSyntaxExceptionHandle(actContext, jsonSyntaxException)
+//        }catch (e:Exception) {
+//            SimpleErrorHandleUtils.unKnowExceptionHandle(actContext, e)
+//        }
+//        return@withContext response
+//    }
+//
+//    @Throws(Exception::class)
+//    suspend fun login(accountID: String,
+//                      password: String): String = withContext(Dispatchers.IO) {
+//        var response: String = ""
+//        val postDataParams = HashMap<String, Any?>()
+//        postDataParams["accountID"] = accountID
+//
+//        // 密碼MD5
+//        val md = MessageDigest.getInstance("MD5")
+//        val md5Password = BigInteger(1, md.digest(password.toByteArray())).toString(16).padStart(32, '0')
+//
+//        postDataParams["password"] = md5Password
+//        response = postConnection(postDataParams, url_login)
+//        return@withContext response
+//    }
 }

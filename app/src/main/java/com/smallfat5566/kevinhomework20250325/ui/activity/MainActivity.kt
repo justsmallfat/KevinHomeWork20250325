@@ -1,7 +1,6 @@
 package com.smallfat5566.kevinhomework20250325.ui.activity
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
@@ -10,9 +9,19 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.coroutineScope
+import androidx.lifecycle.lifecycleScope
+import com.smallfat5566.kevinhomework20250325.models.StockMetrics
+import com.smallfat5566.kevinhomework20250325.network.ApiService
+import com.smallfat5566.kevinhomework20250325.network.ExchangeReportWebService
 import com.smallfat5566.kevinhomework20250325.ui.theme.KevinHomeWork20250325Theme
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AbstractActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -26,6 +35,26 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+
+        val accountWebservice = ExchangeReportWebService(actContext)
+        lifecycleScope.launch(Dispatchers.IO) {
+            val apiService = accountWebservice.getAllStockMetrics()
+            apiService.getAllStockMetrics().enqueue(object : Callback<List<StockMetrics>> {
+                override fun onResponse(call: Call<List<StockMetrics>>, response: Response<List<StockMetrics>>) {
+                    if (response.isSuccessful) {
+                        val posts = response.body()
+                        println("取得的文章數量: ${posts?.size}")
+                    } else {
+                        println("請求失敗: ${response.code()}")
+                    }
+                }
+
+                override fun onFailure(call: Call<List<StockMetrics>>, t: Throwable) {
+                    println("請求錯誤: ${t.message}")
+                }
+            })
+        }
+
     }
 }
 
