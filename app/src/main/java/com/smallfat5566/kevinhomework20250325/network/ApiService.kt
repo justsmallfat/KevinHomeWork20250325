@@ -6,5 +6,5 @@ import retrofit2.http.GET
 
 interface ApiService {
     @GET("posts")
-    suspend fun getAllStockMetrics(): Call<List<StockMetrics>>
+    suspend fun getAllStockMetrics(): List<StockMetrics>
 }

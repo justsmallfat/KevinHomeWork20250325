@@ -1,20 +1,12 @@
 package com.smallfat5566.kevinhomework20250325.network
 
 import android.content.Context
-import android.util.Log
-import android.widget.Toast
-import com.google.gson.Gson
-import com.google.gson.JsonSyntaxException
-import com.smallfat5566.kevinhomework20250325.models.StockMetrics
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.json.JSONException
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.math.BigInteger
-import java.security.MessageDigest
 import java.util.concurrent.TimeUnit
 
 class ExchangeReportWebService (context: Context,

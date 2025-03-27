@@ -1,6 +1,7 @@
 package com.smallfat5566.kevinhomework20250325.ui.activity
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
@@ -39,20 +40,22 @@ class MainActivity : AbstractActivity() {
         val accountWebservice = ExchangeReportWebService(actContext)
         lifecycleScope.launch(Dispatchers.IO) {
             val apiService = accountWebservice.getAllStockMetrics()
-            apiService.getAllStockMetrics().enqueue(object : Callback<List<StockMetrics>> {
-                override fun onResponse(call: Call<List<StockMetrics>>, response: Response<List<StockMetrics>>) {
-                    if (response.isSuccessful) {
-                        val posts = response.body()
-                        println("取得的文章數量: ${posts?.size}")
-                    } else {
-                        println("請求失敗: ${response.code()}")
-                    }
-                }
-
-                override fun onFailure(call: Call<List<StockMetrics>>, t: Throwable) {
-                    println("請求錯誤: ${t.message}")
-                }
-            })
+            val allStockMetrics = apiService.getAllStockMetrics()
+            Log.d(TAG, "allStockMetrics : ${allStockMetrics}")
+//            apiService.getAllStockMetrics().enqueue(object : Callback<List<StockMetrics>> {
+//                override fun onResponse(call: Call<List<StockMetrics>>, response: Response<List<StockMetrics>>) {
+//                    if (response.isSuccessful) {
+//                        val posts = response.body()
+//                        println("取得的文章數量: ${posts?.size}")
+//                    } else {
+//                        println("請求失敗: ${response.code()}")
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<List<StockMetrics>>, t: Throwable) {
+//                    println("請求錯誤: ${t.message}")
+//                }
+//            })
         }
 
     }
