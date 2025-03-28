@@ -56,9 +56,9 @@ class StockMetricsFragment : AbstractFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(StockMetricsViewModel::class.java)
-        viewModel.allStockMetrics.observe(viewLifecycleOwner) {
+//        viewModel.allStockMetrics.observe(viewLifecycleOwner) {
 //            textView.text = it
-        }
+//        }
 
         lifecycleScope.launch(Dispatchers.IO) {
             val exchangeReportAPIService = ExchangeReportWebService(fragContext,true).initApiService()
