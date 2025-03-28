@@ -14,7 +14,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.logging.HttpLoggingInterceptor
 import java.io.IOException
+import java.util.concurrent.TimeUnit
 
 object WebServiceConfig {
     const val CONNECT_TIMEOUT = 5000  // 毫秒
@@ -28,8 +30,21 @@ abstract class BaseWebService(
 ) {
     private val TAG = this.javaClass.simpleName
     val domainName = if (DebugMode == 1) Domain_Dev else Domain_Prod
-    val Protocol = if (DebugMode == 1) Protocol_Dev else Protocol_Prod
+    val protocol = if (DebugMode == 1) Protocol_Dev else Protocol_Prod
+    val baseURL = protocol + domainName
     private val myApplication = webServiceContext.applicationContext as MyApplication
+
+    // 設定 OkHttpClient
+    val loggingInterceptor = HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BODY
+    }
+
+    val okHttpClient = OkHttpClient.Builder()
+        .addInterceptor(loggingInterceptor) // 記錄請求與回應
+        .connectTimeout(30, TimeUnit.SECONDS) // 設定連線超時
+        .readTimeout(30, TimeUnit.SECONDS)
+        .writeTimeout(30, TimeUnit.SECONDS)
+        .build()
 
 
 //    suspend fun postConnection(

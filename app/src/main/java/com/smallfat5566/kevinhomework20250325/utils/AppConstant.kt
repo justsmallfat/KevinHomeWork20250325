@@ -10,5 +10,6 @@ object AppConstant {
         const val Domain_Prod = "openapi.twse.com.tw"
         const val Protocol_Dev = "https://"
         const val Protocol_Prod = "https://"
+        const val Prefix = "https://"
     }
 }

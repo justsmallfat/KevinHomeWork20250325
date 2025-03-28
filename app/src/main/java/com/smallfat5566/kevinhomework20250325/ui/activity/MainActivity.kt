@@ -14,6 +14,7 @@ import androidx.lifecycle.coroutineScope
 import androidx.lifecycle.lifecycleScope
 import com.smallfat5566.kevinhomework20250325.models.StockMetrics
 import com.smallfat5566.kevinhomework20250325.network.ApiService
+import com.smallfat5566.kevinhomework20250325.network.ExchangeReportAPIService
 import com.smallfat5566.kevinhomework20250325.network.ExchangeReportWebService
 import com.smallfat5566.kevinhomework20250325.ui.theme.KevinHomeWork20250325Theme
 import kotlinx.coroutines.Dispatchers
@@ -21,6 +22,8 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AbstractActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,10 +40,10 @@ class MainActivity : AbstractActivity() {
             }
         }
 
-        val accountWebservice = ExchangeReportWebService(actContext)
+
         lifecycleScope.launch(Dispatchers.IO) {
-            val apiService = accountWebservice.getAllStockMetrics()
-            val allStockMetrics = apiService.getAllStockMetrics()
+            val exchangeReportAPIService = ExchangeReportWebService(actContext,true).initApiService()
+            val allStockMetrics = exchangeReportAPIService.getAllStockMetrics()
             Log.d(TAG, "allStockMetrics : ${allStockMetrics}")
 //            apiService.getAllStockMetrics().enqueue(object : Callback<List<StockMetrics>> {
 //                override fun onResponse(call: Call<List<StockMetrics>>, response: Response<List<StockMetrics>>) {
