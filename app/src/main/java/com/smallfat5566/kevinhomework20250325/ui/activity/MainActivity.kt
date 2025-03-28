@@ -1,4 +1,4 @@
-package com.smallfat5566.kevinhomework20250325.activity
+package com.smallfat5566.kevinhomework20250325.ui.activity
 
 import android.os.Bundle
 import android.util.Log
@@ -33,32 +33,35 @@ class MainActivity : AbstractActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+                R.id.navigation_metrics,
+                R.id.navigation_home,
+                R.id.navigation_dashboard,
+                R.id.navigation_notifications
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
 
-        lifecycleScope.launch(Dispatchers.IO) {
-            val exchangeReportAPIService = ExchangeReportWebService(actContext,true).initApiService()
-            val allStockMetrics = exchangeReportAPIService.getAllStockMetrics()
-            Log.d(TAG, "allStockMetrics : ${allStockMetrics}")
-//            apiService.getAllStockMetrics().enqueue(object : Callback<List<StockMetrics>> {
-//                override fun onResponse(call: Call<List<StockMetrics>>, response: Response<List<StockMetrics>>) {
-//                    if (response.isSuccessful) {
-//                        val posts = response.body()
-//                        println("取得的文章數量: ${posts?.size}")
-//                    } else {
-//                        println("請求失敗: ${response.code()}")
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<List<StockMetrics>>, t: Throwable) {
-//                    println("請求錯誤: ${t.message}")
-//                }
-//            })
-        }
+//        lifecycleScope.launch(Dispatchers.IO) {
+//            val exchangeReportAPIService = ExchangeReportWebService(actContext,true).initApiService()
+//            val allStockMetrics = exchangeReportAPIService.getAllStockMetrics()
+//            Log.d(TAG, "allStockMetrics : ${allStockMetrics}")
+////            apiService.getAllStockMetrics().enqueue(object : Callback<List<StockMetrics>> {
+////                override fun onResponse(call: Call<List<StockMetrics>>, response: Response<List<StockMetrics>>) {
+////                    if (response.isSuccessful) {
+////                        val posts = response.body()
+////                        println("取得的文章數量: ${posts?.size}")
+////                    } else {
+////                        println("請求失敗: ${response.code()}")
+////                    }
+////                }
+////
+////                override fun onFailure(call: Call<List<StockMetrics>>, t: Throwable) {
+////                    println("請求錯誤: ${t.message}")
+////                }
+////            })
+//        }
 
     }
 }
