@@ -38,7 +38,7 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
-        compose = true
+        viewBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -67,7 +67,13 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
     //Gson
     implementation("com.google.code.gson:gson:2.10")
+
     implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("androidx.coordinatorlayout:coordinatorlayout:1.3.0")
+    implementation("androidx.navigation:navigation-fragment:2.8.9")
+    implementation("androidx.constraintlayout:constraintlayout:2.2.1")
+    implementation("com.google.android.material:material:1.12.0")
+    implementation("androidx.navigation:navigation-ui-ktx:2.8.9")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
