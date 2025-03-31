@@ -1,14 +1,17 @@
 package com.smallfat5566.kevinhomework20250325.network
 
 import android.content.Context
+import android.os.Build
+import androidx.annotation.RequiresExtension
+import com.smallfat5566.kevinhomework20250325.models.StockDayAll
+import com.smallfat5566.kevinhomework20250325.models.StockMetrics
+import com.smallfat5566.kevinhomework20250325.utils.SimpleErrorHandleUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import okhttp3.OkHttpClient
-import okhttp3.Protocol
-import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
+import java.io.IOException
 
 class ExchangeReportWebService (context: Context,
                                 showProgressDialog: Boolean = true
@@ -18,20 +21,7 @@ class ExchangeReportWebService (context: Context,
 //    private val url_STOCK_DAY_ALL = (Protocol + domainName + prefix + "STOCK_DAY_ALL")
 
 
-
-    suspend fun initApiService(): ExchangeReportAPIService = withContext(Dispatchers.IO) {
-        // 設定 OkHttpClient
-//        val loggingInterceptor = HttpLoggingInterceptor().apply {
-//            level = HttpLoggingInterceptor.Level.BODY
-//        }
-
-//        val okHttpClient = OkHttpClient.Builder()
-//            .addInterceptor(loggingInterceptor) // 記錄請求與回應
-//            .connectTimeout(30, TimeUnit.SECONDS) // 設定連線超時
-//            .readTimeout(30, TimeUnit.SECONDS)
-//            .writeTimeout(30, TimeUnit.SECONDS)
-//            .build()
-
+    fun initApiService(): ExchangeReportAPIService {
         // 設定 Retrofit
         val retrofit = Retrofit.Builder()
             .baseUrl(baseURL)
@@ -40,10 +30,35 @@ class ExchangeReportWebService (context: Context,
             .build()
 
         // 創建 API 服務
-        val apiService = retrofit.create(ExchangeReportAPIService::class.java)
-        return@withContext apiService
+        return retrofit.create(ExchangeReportAPIService::class.java)
     }
 
+    suspend fun <T> fetchStockData(
+        context: Context,
+        apiCall: suspend ExchangeReportAPIService.() -> List<T>
+    ): List<T> = withContext(Dispatchers.IO) {
+        val exchangeReportAPIService = ExchangeReportWebService(context, true).initApiService()
+        return@withContext try {
+            apiCall(exchangeReportAPIService)
+        } catch (e: IOException) {
+            SimpleErrorHandleUtils.errorSampleHandle(context, e.toString())
+            emptyList()
+        } catch (e: HttpException) {
+            SimpleErrorHandleUtils.errorSampleHandle(context, e.toString())
+            emptyList()
+        } catch (e: Exception) {
+            SimpleErrorHandleUtils.errorSampleHandle(context, e.toString())
+            e.printStackTrace()
+            emptyList()
+        }
+    }
+
+
+    suspend fun getStockMetricsALL(context: Context): List<StockMetrics> =
+        fetchStockData(context) { getAllStockMetrics() }
+
+    suspend fun getStockDayAll(context: Context): List<StockDayAll> =
+        fetchStockData(context) { getAllStockDayAll() }
 
 //    @Throws(Exception::class)
 //    suspend fun getStockMetricsALL(): List<StockMetrics>? = withContext(Dispatchers.IO) {
