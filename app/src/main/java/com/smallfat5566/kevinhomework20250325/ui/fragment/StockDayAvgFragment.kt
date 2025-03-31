@@ -8,27 +8,25 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.smallfat5566.kevinhomework20250325.R
-import com.smallfat5566.kevinhomework20250325.databinding.FragmentStockDayBinding
-import com.smallfat5566.kevinhomework20250325.ui.adapter.StockDayDetailAdapter
-import com.smallfat5566.kevinhomework20250325.ui.adapter.StockMetricsAdapter
+import com.smallfat5566.kevinhomework20250325.databinding.FragmentStockDayAvgBinding
+import com.smallfat5566.kevinhomework20250325.ui.adapter.StockDayAVGAdapter
 
-class StockDayFragment : AbstractFragment() {
+class StockDayAvgFragment : AbstractFragment() {
 
     companion object {
-        fun newInstance() = StockDayFragment()
+        fun newInstance() = StockDayAvgFragment()
     }
 
-    private lateinit var viewModel: StockDayViewModel
+    private lateinit var viewModel: StockDayAvgViewModel
 
-    private var _binding: FragmentStockDayBinding? = null
+    private var _binding: FragmentStockDayAvgBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
 
-        _binding = FragmentStockDayBinding.inflate(inflater, container, false)
+        _binding = FragmentStockDayAvgBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         return root
@@ -36,17 +34,18 @@ class StockDayFragment : AbstractFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(StockDayViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(StockDayAvgViewModel::class.java)
 
 
-        val adapter = StockDayDetailAdapter { item ->
+
+        val adapter = StockDayAVGAdapter { item ->
             Toast.makeText(fragContext, "點擊了: ${item.Name}", Toast.LENGTH_LONG).show()
         }
 
-        binding.stockDayRecyclerView.layoutManager = LinearLayoutManager(fragContext)
-        binding.stockDayRecyclerView.adapter = adapter
+        binding.stockDayAVGRecyclerView.layoutManager = LinearLayoutManager(fragContext)
+        binding.stockDayAVGRecyclerView.adapter = adapter
 
-        viewModel.allStockDayDetails.observe(viewLifecycleOwner) { stockDayDetails ->
+        viewModel.allStockDayAvgs.observe(viewLifecycleOwner) { stockDayDetails ->
             adapter.submitList(stockDayDetails)
         }
 

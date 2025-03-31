@@ -13,26 +13,33 @@
         tools:layout="@layout/fragment_stock_metrics" />
 
     <fragment
-        android:id="@+id/navigation_stock_day"
+        android:id="@+id/navigation_stock_day_avg"
         android:name="com.smallfat5566.kevinhomework20250325.ui.fragment.StockDayFragment"
+        android:label="@string/title_stock_day_avg"
+        tools:layout="@layout/fragment_stock_day_avg" />
+
+    <fragment
+        android:id="@+id/navigation_stock_day"
+        android:name="com.smallfat5566.kevinhomework20250325.ui.fragment.StockDayAvgFragment"
         android:label="@string/title_stock_day"
         tools:layout="@layout/fragment_stock_day" />
 
-    <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.smallfat5566.kevinhomework20250325.ui.fragment.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
 
-    <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.smallfat5566.kevinhomework20250325.ui.fragment.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_home"-->
+<!--        android:name="com.smallfat5566.kevinhomework20250325.ui.fragment.home.HomeFragment"-->
+<!--        android:label="@string/title_home"-->
+<!--        tools:layout="@layout/fragment_home" />-->
 
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.smallfat5566.kevinhomework20250325.ui.fragment.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_dashboard"-->
+<!--        android:name="com.smallfat5566.kevinhomework20250325.ui.fragment.dashboard.DashboardFragment"-->
+<!--        android:label="@string/title_dashboard"-->
+<!--        tools:layout="@layout/fragment_dashboard" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_notifications"-->
+<!--        android:name="com.smallfat5566.kevinhomework20250325.ui.fragment.notifications.NotificationsFragment"-->
+<!--        android:label="@string/title_notifications"-->
+<!--        tools:layout="@layout/fragment_notifications" />-->
 </navigation>

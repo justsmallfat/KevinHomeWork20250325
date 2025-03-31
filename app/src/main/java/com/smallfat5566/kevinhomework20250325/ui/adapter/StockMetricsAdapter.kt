@@ -1,52 +1,41 @@
 package com.smallfat5566.kevinhomework20250325.ui.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
-import com.smallfat5566.kevinhomework20250325.R
 import com.smallfat5566.kevinhomework20250325.databinding.RecycleItemStockMetricsBinding
 import com.smallfat5566.kevinhomework20250325.models.StockMetrics
 
-
-// Item 佈局的 View Binding
-class ItemViewHolder(
-    private val binding: RecycleItemStockMetricsBinding
-) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(item: StockMetrics, onItemClick: (StockMetrics) -> Unit) {
-        binding.titleTextView.text = item.Name
-    }
-}
-
-// 使用 ListAdapter 的現代 Adapter
 class StockMetricsAdapter(
-    private val onItemClick: (StockMetrics) -> Unit
-) : ListAdapter<StockMetrics, ItemViewHolder>(ItemDiffCallback) {
+    onItemClick: (StockMetrics) -> Unit
+) : BaseListAdapter<StockMetrics, RecycleItemStockMetricsBinding>(
+    ItemDiffCallback, onItemClick
+) {
+    override fun createBinding(inflater: LayoutInflater, parent: ViewGroup): RecycleItemStockMetricsBinding {
+        return RecycleItemStockMetricsBinding.inflate(inflater, parent, false)
+    }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        val binding = RecycleItemStockMetricsBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
-        )
+    override fun createViewHolder(binding: RecycleItemStockMetricsBinding): BaseViewHolder<StockMetrics, RecycleItemStockMetricsBinding> {
         return ItemViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        holder.bind(getItem(position), onItemClick)
-    }
-}
-
-// DiffUtil 回調，用於高效比較項目
-object ItemDiffCallback : DiffUtil.ItemCallback<StockMetrics>() {
-    override fun areItemsTheSame(oldItem: StockMetrics, newItem: StockMetrics): Boolean {
-        return oldItem.Code == newItem.Code
+    class ItemViewHolder(
+        binding: RecycleItemStockMetricsBinding
+    ) : BaseViewHolder<StockMetrics, RecycleItemStockMetricsBinding>(binding) {
+        override fun bind(item: StockMetrics, onItemClick: (StockMetrics) -> Unit) {
+            binding.titleTextView.text = item.Name
+        }
     }
 
-    override fun areContentsTheSame(oldItem: StockMetrics, newItem: StockMetrics): Boolean {
-        return oldItem == newItem
+    companion object {
+        private val ItemDiffCallback = object : DiffUtil.ItemCallback<StockMetrics>() {
+            override fun areItemsTheSame(oldItem: StockMetrics, newItem: StockMetrics): Boolean {
+                return oldItem.Code == newItem.Code
+            }
+
+            override fun areContentsTheSame(oldItem: StockMetrics, newItem: StockMetrics): Boolean {
+                return oldItem == newItem
+            }
+        }
     }
 }

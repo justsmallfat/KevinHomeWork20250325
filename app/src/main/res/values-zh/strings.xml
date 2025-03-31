@@ -6,4 +6,5 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_stock_metrics">指標</string>
     <string name="title_stock_day">每日</string>
+    <string name="title_stock_day_avg">每日</string>
 </resources>
