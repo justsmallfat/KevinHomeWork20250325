@@ -14,13 +14,13 @@
 
     <fragment
         android:id="@+id/navigation_stock_day_avg"
-        android:name="com.smallfat5566.kevinhomework20250325.ui.fragment.StockDayFragment"
+        android:name="com.smallfat5566.kevinhomework20250325.ui.fragment.StockDayAvgFragment"
         android:label="@string/title_stock_day_avg"
         tools:layout="@layout/fragment_stock_day_avg" />
 
     <fragment
         android:id="@+id/navigation_stock_day"
-        android:name="com.smallfat5566.kevinhomework20250325.ui.fragment.StockDayAvgFragment"
+        android:name="com.smallfat5566.kevinhomework20250325.ui.fragment.StockDayFragment"
         android:label="@string/title_stock_day"
         tools:layout="@layout/fragment_stock_day" />
 

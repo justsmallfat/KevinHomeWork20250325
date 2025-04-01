@@ -1,13 +1,17 @@
 package com.smallfat5566.kevinhomework20250325.ui.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.smallfat5566.kevinhomework20250325.R
 import com.smallfat5566.kevinhomework20250325.databinding.FragmentStockDayBinding
 import com.smallfat5566.kevinhomework20250325.ui.adapter.StockDayDetailAdapter
@@ -50,7 +54,26 @@ class StockDayFragment : AbstractFragment() {
             adapter.submitList(stockDayDetails)
         }
 
+        binding.filterButton.setOnClickListener {
+            showOrderBottomSheet()
+        }
+
         viewModel.fetchStockMetrics(fragContext)
     }
 
+    fun showOrderBottomSheet() {
+        // 創建 Bottom Sheet Dialog
+        val dialog = BottomSheetDialog(fragContext)
+        val view = layoutInflater.inflate(R.layout.bottom_sheet_stock_day_detail_layout, null)
+        dialog.setContentView(view)
+
+        // 設置關閉按鈕
+        val closeButton = view.findViewById<ImageButton>(R.id.closeButton)
+        closeButton.setOnClickListener {
+            dialog.dismiss() // 關閉 Bottom Sheet
+        }
+
+        // 顯示 Bottom Sheet
+        dialog.show()
+    }
 }

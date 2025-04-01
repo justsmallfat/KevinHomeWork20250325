@@ -1,12 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">KevinDemo</string>
+    <string name="app_name">面試作業</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="title_stock_metrics">Metrics</string>
-    <string name="title_stock_day">Day</string>
-    <string name="title_stock_day_avg">Day Avg</string>
-    <string name="close">close</string>
-    <string name="sort_by_stock_code_asc">Sort by stock code asc</string>
-    <string name="sort_by_stock_code_desc">Sort by stock code desc</string>
+    <string name="title_stock_metrics">指標</string>
+    <string name="title_stock_day">每日</string>
+    <string name="title_stock_day_avg">日均</string>
+    <string name="close">關閉</string>
+    <string name="sort_by_stock_code_asc">依股票代號降序</string>
+    <string name="sort_by_stock_code_desc">依股票代號升序</string>
 </resources>

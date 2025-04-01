@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.smallfat5566.kevinhomework20250325.models.StockDayAll
 import com.smallfat5566.kevinhomework20250325.models.StockMetrics
 import com.smallfat5566.kevinhomework20250325.network.ExchangeReportWebService
@@ -21,7 +22,11 @@ class StockDayViewModel : ViewModel() {
     fun fetchStockMetrics(context: Context) {
         viewModelScope.launch(Dispatchers.IO) {
             val exchangeReportAPIService = ExchangeReportWebService(context, true)
-            allStockDayDetails.postValue(exchangeReportAPIService.getStockDayAll(context))
+            val tempStockDayAll = exchangeReportAPIService.getStockDayAll(context)
+            allStockDayDetails.postValue(tempStockDayAll)
         }
     }
+
+
+
 }
