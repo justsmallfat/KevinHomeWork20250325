@@ -26,7 +26,15 @@ class StockDayViewModel : ViewModel() {
             allStockDayDetails.postValue(tempStockDayAll)
         }
     }
-
-
+    fun sortDesc() {
+        allStockDayDetails.value = allStockDayDetails.value?.sortedByDescending {
+            it.Code
+        }
+    }
+    fun sortAsc() {
+        allStockDayDetails.value = allStockDayDetails.value?.sortedBy {
+            it.Code
+        }
+    }
 
 }

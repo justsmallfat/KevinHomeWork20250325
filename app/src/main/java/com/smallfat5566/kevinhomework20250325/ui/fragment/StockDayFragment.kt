@@ -73,6 +73,19 @@ class StockDayFragment : AbstractFragment() {
             dialog.dismiss() // 關閉 Bottom Sheet
         }
 
+        // 設置倒序按鈕
+        val sortDescButton = view.findViewById<Button>(R.id.sortDescButton)
+        sortDescButton.setOnClickListener {
+            viewModel.sortDesc()
+            dialog.dismiss() // 關閉 Bottom Sheet
+        }
+        // 設置順序按鈕
+        val sortAscButton = view.findViewById<Button>(R.id.sortAscButton)
+        sortAscButton.setOnClickListener {
+            viewModel.sortAsc()
+            dialog.dismiss() // 關閉 Bottom Sheet
+        }
+
         // 顯示 Bottom Sheet
         dialog.show()
     }
