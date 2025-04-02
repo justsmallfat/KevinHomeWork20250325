@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.smallfat5566.kevinhomework20250325.R
 import com.smallfat5566.kevinhomework20250325.databinding.ViewTransactionDataBinding
+import com.smallfat5566.kevinhomework20250325.utils.StringUtils
+import java.text.DecimalFormat
 
 class TransactionDataView @JvmOverloads constructor(
     context: Context,
@@ -28,13 +30,8 @@ class TransactionDataView @JvmOverloads constructor(
 
             setNameText(keyText)
             setValueText(valueText)
-            binding.root.post {
-                val parentWidth = binding.root.width
-                val childWidth = parentWidth / 2 // 平均分配
-                binding.tvValue.width = childWidth
-                binding.tvValue.ellipsize = TextUtils.TruncateAt.END
-            }
 
+            setValueTextWidth()
 
             typedArray.recycle()
         }
@@ -45,9 +42,20 @@ class TransactionDataView @JvmOverloads constructor(
     }
 
     fun setValueText(text: String) {
-        binding.tvValue.text = text
+        if (StringUtils.checkStringInt(text)){
+            val formatter = DecimalFormat("#,###")
+            val formattedNumber = formatter.format(text.toInt())
+            binding.tvValue.text = formattedNumber
+        }else{
+            binding.tvValue.text = "---"
+        }
     }
     fun setValueTextWidth() {
-
+        binding.root.post {
+            val parentWidth = binding.root.width
+            val childWidth = parentWidth / 2 // 平均分配
+            binding.tvValue.width = childWidth
+            binding.tvValue.ellipsize = TextUtils.TruncateAt.END
+        }
     }
 }
