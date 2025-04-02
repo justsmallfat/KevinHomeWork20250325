@@ -31,14 +31,14 @@ class TitleValueView @JvmOverloads constructor(
             val keyText = typedArray.getString(R.styleable.KeyValueView_keyText) ?: ""
             val valueText = typedArray.getString(R.styleable.KeyValueView_valueText) ?: ""
 
-            setKeyText(keyText)
+            setTitleText(keyText)
             setValueText(valueText)
 
             typedArray.recycle()
         }
     }
 
-    fun setKeyText(text: String) {
+    fun setTitleText(text: String) {
         binding.tvKey.text = text
     }
 

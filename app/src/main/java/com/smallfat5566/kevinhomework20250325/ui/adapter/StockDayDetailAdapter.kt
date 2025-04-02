@@ -23,7 +23,7 @@ class StockDayDetailAdapter(
         binding: RecycleItemStockDayDetailBinding
     ) : BaseViewHolder<StockDayAll, RecycleItemStockDayDetailBinding>(binding) {
         override fun bind(item: StockDayAll, onItemClick: (StockDayAll) -> Unit) {
-            binding.titleTextView.text = item.Name
+            binding.codeTextView.setValueText(item.Code)
         }
     }
 

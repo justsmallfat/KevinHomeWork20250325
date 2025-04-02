@@ -1,16 +1,21 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.KevinHomeWork20250325" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
+    <style name="Theme.KevinHomeWork20250325" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- 主色 -->
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryVariant">@color/primary_variant</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- 輔助色 -->
+        <item name="colorSecondary">@color/accent_color</item>
+        <item name="colorSecondaryVariant">@color/accent_variant</item>
         <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
+        <!-- 背景和文字色，根據模式動態切換 -->
+        <item name="android:windowBackground">@color/background_color</item>
+        <item name="android:textColor">@color/text_color</item>
+        <!-- 狀態欄和導航欄 -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <item name="android:navigationBarColor">@color/background_color</item>
+        <!-- 高亮效果 -->
+        <item name="colorControlHighlight">@color/highlight_color</item>
     </style>
 </resources>

@@ -4,6 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.smallfat5566.kevinhomework20250325.ui.view.TitleValueView
+        android:id="@+id/codeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:keyText="名稱"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/titleTextView"
         android:layout_width="0dp"

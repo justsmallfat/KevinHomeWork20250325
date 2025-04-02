@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 深色模式背景 -->
+    <color name="background_color">#121212</color>   <!-- 接近黑色的深灰 -->
+    <!-- 深色模式文字 -->
+    <color name="text_color">#FFFFFF</color>         <!-- 白色 -->
+</resources>

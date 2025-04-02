@@ -16,4 +16,12 @@
     <dimen name="item_margin">8dp</dimen>
     <dimen name="item_margin_big">12dp</dimen>
     <dimen name="item_margin_bigger">16dp</dimen>
+
+
+    <dimen name="text_size_bigger">32sp</dimen>
+    <dimen name="text_size_big">28sp</dimen>
+    <dimen name="text_size">24sp</dimen>
+    <dimen name="text_size_small">20sp</dimen>
+    <dimen name="text_size_smaller">16sp</dimen>
+    <dimen name="text_size_smallest">12sp</dimen>
 </resources>
