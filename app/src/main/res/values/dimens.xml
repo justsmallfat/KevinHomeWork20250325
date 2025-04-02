@@ -3,9 +3,11 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-
     <dimen name="fragment_horizontal_padding">16dp</dimen>
     <dimen name="fragment_vertical_padding">16dp</dimen>
+
+    <dimen name="list_horizontal_padding">16dp</dimen>
+    <dimen name="list_vertical_padding">16dp</dimen>
 
 
     <dimen name="image_button_size">40dp</dimen>
@@ -18,10 +20,12 @@
     <dimen name="item_margin_bigger">16dp</dimen>
 
 
+
+
     <dimen name="text_size_bigger">32sp</dimen>
     <dimen name="text_size_big">28sp</dimen>
-    <dimen name="text_size">24sp</dimen>
-    <dimen name="text_size_small">20sp</dimen>
-    <dimen name="text_size_smaller">16sp</dimen>
+    <dimen name="text_size">20sp</dimen>
+    <dimen name="text_size_small">16sp</dimen>
+    <dimen name="text_size_smaller">14sp</dimen>
     <dimen name="text_size_smallest">12sp</dimen>
 </resources>

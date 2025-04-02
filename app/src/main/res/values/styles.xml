@@ -1,3 +1,7 @@
-<resources>
-
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="List_Layout">
+        <item name="android:minHeight">48dp</item>
+        <item name="android:paddingVertical" >@dimen/list_vertical_padding</item>
+        <item name="android:paddingHorizontal" >@dimen/list_horizontal_padding</item>
+    </style>
 </resources>

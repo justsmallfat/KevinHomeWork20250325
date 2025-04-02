@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="KeyValueView">
-        <attr name="keyText" format="string"/>
+    <declare-styleable name="TransactionDataView">
+        <attr name="nameText" format="string"/>
         <attr name="valueText" format="string"/>
     </declare-styleable>
 </resources>
