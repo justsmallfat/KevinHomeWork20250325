@@ -27,6 +27,11 @@ class StockDayDetailAdapter(
             binding.nameTextView.text = item.Name
 
 
+            binding.openingPriceTitleValueView.setValueText(item.OpeningPrice)
+            binding.closingPriceTitleValueView.setValueText(item.ClosingPrice)
+            binding.highestPriceTitleValueView.setValueText(item.HighestPrice)
+            binding.lowestPriceTitleValueView.setValueText(item.LowestPrice)
+            binding.changeTitleValueView.setValueText(item.Change)
 //            binding
 
             binding.transactionTitleValueView.setValueText(item.Transaction)

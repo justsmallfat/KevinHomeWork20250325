@@ -12,10 +12,10 @@
 
     <dimen name="image_button_size">40dp</dimen>
 
-    <dimen name="item_margin_smallest">2dp</dimen>
-    <dimen name="item_margin_smaller">4dp</dimen>
-    <dimen name="item_margin_small">6dp</dimen>
-    <dimen name="item_margin">8dp</dimen>
+    <dimen name="item_margin_smallest">1dp</dimen>
+    <dimen name="item_margin_smaller">2dp</dimen>
+    <dimen name="item_margin_small">4dp</dimen>
+    <dimen name="item_margin">6dp</dimen>
     <dimen name="item_margin_big">12dp</dimen>
     <dimen name="item_margin_bigger">16dp</dimen>
 
