@@ -14,4 +14,7 @@
     <color name="background_color">#FFFFFF</color>   <!-- 純白色 -->
     <!-- 淺色模式文字 -->
     <color name="text_color">#000000</color>         <!-- 黑色 -->
+
+    <color name="stock_green">#388E3C</color>
+    <color name="stock_red">#C62828</color>
 </resources>

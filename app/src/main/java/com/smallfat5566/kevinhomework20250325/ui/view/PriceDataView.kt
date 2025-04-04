@@ -4,6 +4,7 @@ import android.content.Context
 import android.text.TextUtils
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import androidx.compose.ui.graphics.Color
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.smallfat5566.kevinhomework20250325.R
 import com.smallfat5566.kevinhomework20250325.databinding.ViewPriceDataBinding
@@ -59,5 +60,8 @@ class PriceDataView @JvmOverloads constructor(
             binding.tvValue.width = tvValueWidth
             binding.tvValue.ellipsize = TextUtils.TruncateAt.END
         }
+    }
+    fun setValueColor(color: Int) {
+        binding.tvValue.setTextColor(color)
     }
 }

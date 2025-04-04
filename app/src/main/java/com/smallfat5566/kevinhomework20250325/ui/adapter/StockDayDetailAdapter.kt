@@ -1,10 +1,15 @@
 package com.smallfat5566.kevinhomework20250325.ui.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.compose.ui.graphics.Color
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
+import com.smallfat5566.kevinhomework20250325.R
 import com.smallfat5566.kevinhomework20250325.databinding.RecycleItemStockDayDetailBinding
 import com.smallfat5566.kevinhomework20250325.models.StockDayAll
+import com.smallfat5566.kevinhomework20250325.utils.StringUtils
 
 class StockDayDetailAdapter(
     onItemClick: (StockDayAll) -> Unit
@@ -32,6 +37,17 @@ class StockDayDetailAdapter(
             binding.highestPriceTitleValueView.setValueText(item.HighestPrice)
             binding.lowestPriceTitleValueView.setValueText(item.LowestPrice)
             binding.changeTitleValueView.setValueText(item.Change)
+            if (StringUtils.checkStringDouble(item.Change)){
+                val changeValue = item.Change.toDouble()
+                val color = if (changeValue < 0) {
+                    ContextCompat.getColor(binding.root.context, R.color.stock_green)
+                } else if (changeValue > 0) {
+                    ContextCompat.getColor(binding.root.context, R.color.stock_red)
+                } else {
+                    ContextCompat.getColor(binding.root.context, R.color.white)
+                }
+                binding.changeTitleValueView.setValueColor(color)
+            }
 //            binding
 
             binding.transactionTitleValueView.setValueText(item.Transaction)
