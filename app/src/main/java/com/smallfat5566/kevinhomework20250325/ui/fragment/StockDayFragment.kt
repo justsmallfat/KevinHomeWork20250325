@@ -19,10 +19,6 @@ import com.smallfat5566.kevinhomework20250325.ui.adapter.StockMetricsAdapter
 
 class StockDayFragment : AbstractFragment() {
 
-    companion object {
-        fun newInstance() = StockDayFragment()
-    }
-
     private lateinit var viewModel: StockDayViewModel
 
     private var _binding: FragmentStockDayBinding? = null

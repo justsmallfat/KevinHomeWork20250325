@@ -17,4 +17,5 @@ data class StockDayAll (
     val Change: String,	//漲跌價差
     val Transaction: String,	//成交筆數
 
+    val MonthlyAveragePrice: String,	//月平均價
 ): Parcelable

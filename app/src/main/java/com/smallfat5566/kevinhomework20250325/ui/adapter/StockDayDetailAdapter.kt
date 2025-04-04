@@ -32,27 +32,44 @@ class StockDayDetailAdapter(
             binding.nameTextView.text = item.Name
 
 
+
             binding.openingPriceTitleValueView.setValueText(item.OpeningPrice)
+            binding.openingPriceTitleValueView.setValueColor(getCompAVGColor(item.OpeningPrice, item.MonthlyAveragePrice))
             binding.closingPriceTitleValueView.setValueText(item.ClosingPrice)
+            binding.closingPriceTitleValueView.setValueColor(getCompAVGColor(item.ClosingPrice, item.MonthlyAveragePrice))
             binding.highestPriceTitleValueView.setValueText(item.HighestPrice)
             binding.lowestPriceTitleValueView.setValueText(item.LowestPrice)
-            binding.changeTitleValueView.setValueText(item.Change)
             if (StringUtils.checkStringDouble(item.Change)){
                 val changeValue = item.Change.toDouble()
-                val color = if (changeValue < 0) {
-                    ContextCompat.getColor(binding.root.context, R.color.stock_green)
+                var color = ContextCompat.getColor(binding.root.context, R.color.text_color)
+                if (changeValue < 0) {
+                    color = ContextCompat.getColor(binding.root.context, R.color.stock_green)
                 } else if (changeValue > 0) {
-                    ContextCompat.getColor(binding.root.context, R.color.stock_red)
-                } else {
-                    ContextCompat.getColor(binding.root.context, R.color.white)
+                    color = ContextCompat.getColor(binding.root.context, R.color.stock_red)
                 }
                 binding.changeTitleValueView.setValueColor(color)
             }
+            binding.changeTitleValueView.setValueText(item.Change)
+            binding.MonthlyAveragePriceTitleValueView.setValueText(item.MonthlyAveragePrice)
 //            binding
 
             binding.transactionTitleValueView.setValueText(item.Transaction)
             binding.tradeVolumeTitleValueView.setValueText(item.TradeVolume)
             binding.tradeValueTitleValueView.setValueText(item.TradeValue)
+        }
+
+        fun getCompAVGColor(prics: String, avg: String): Int {
+            var color = ContextCompat.getColor(binding.root.context, R.color.text_color)
+            if (StringUtils.checkStringDouble(prics) && StringUtils.checkStringDouble(avg)) {
+                val pricsDouble = prics.toDouble()
+                val avgDouble = avg.toDouble()
+                if (pricsDouble > avgDouble) {
+                    color = ContextCompat.getColor(binding.root.context, R.color.stock_red)
+                } else if (pricsDouble < avgDouble) {
+                    color = ContextCompat.getColor(binding.root.context, R.color.stock_green)
+                }
+            }
+            return color
         }
     }
 

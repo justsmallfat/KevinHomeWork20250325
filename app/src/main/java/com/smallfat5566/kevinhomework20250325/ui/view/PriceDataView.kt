@@ -42,10 +42,10 @@ class PriceDataView @JvmOverloads constructor(
         binding.tvName.text = text
     }
 
-    fun setValueText(text: String) {
+    fun setValueText(text: String?) {
         if (StringUtils.checkStringDouble(text)){
             val formatter = DecimalFormat("#,###.##")
-            val formattedNumber = formatter.format(text.toDouble())
+            val formattedNumber = formatter.format(text?.toDouble())
             binding.tvValue.text = formattedNumber
         }else{
             binding.tvValue.text = "---"
