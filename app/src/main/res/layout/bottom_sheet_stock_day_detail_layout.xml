@@ -9,7 +9,8 @@
         android:id="@+id/closeButton"
         android:layout_width="@dimen/image_button_size"
         android:layout_height="@dimen/image_button_size"
-        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        android:src="@drawable/icon_cross"
+        style="@style/Button_Image"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 

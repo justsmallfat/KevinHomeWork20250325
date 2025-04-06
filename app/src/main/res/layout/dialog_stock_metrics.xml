@@ -10,7 +10,8 @@
         android:id="@+id/closeButton"
         android:layout_width="@dimen/image_button_size"
         android:layout_height="@dimen/image_button_size"
-        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        android:src="@drawable/icon_cross"
+        style="@style/Button_Image"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="33"
-                app:nameText="殖利率"/>
+                app:nameText="殖利率(%)"/>
             <com.smallfat5566.kevinhomework20250325.ui.view.RatioDataView
                 android:id="@+id/priceBookTitleValueView"
                 android:layout_width="match_parent"

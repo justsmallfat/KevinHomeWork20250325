@@ -22,7 +22,7 @@
         android:layout_marginStart="@dimen/item_margin"
         android:lines="1"
         app:layout_constraintStart_toEndOf="@id/tvName"
-        app:layout_constraintBaseline_toBottomOf="@id/tvName"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvName"
         app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

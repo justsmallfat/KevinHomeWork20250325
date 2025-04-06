@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!-- 主色 -->
     <color name="primary_color">#1E3A8A</color>
     <color name="primary_variant">#172554</color>
@@ -10,6 +11,9 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="highlight_color">#60A5FA</color>
+
+    <!-- 淺色模式背景 -->
+    <color name="transparent">#00FFFFFF</color>   <!-- 純白色 -->
     <!-- 淺色模式背景 -->
     <color name="background_color">#FFFFFF</color>   <!-- 純白色 -->
     <!-- 淺色模式文字 -->

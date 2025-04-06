@@ -53,7 +53,7 @@ class TransactionDataView @JvmOverloads constructor(
     fun setValueTextWidth() {
         binding.root.post {
             val parentWidth = binding.root.width
-            val childWidth = parentWidth / 2 // 平均分配
+            val childWidth = parentWidth / 2 - 6
             binding.tvValue.width = childWidth
             binding.tvValue.ellipsize = TextUtils.TruncateAt.END
         }

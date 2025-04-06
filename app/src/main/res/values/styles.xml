@@ -16,4 +16,12 @@
         <item name="android:layout_marginTop" >@dimen/dialog_main_layout_top_margin</item>
         <item name="android:layout_marginHorizontal" >@dimen/dialog_main_layout_horizontal_margin</item>
     </style>
+
+
+    <style name="Button_Image">
+        <item name="android:minWidth">30dp</item>
+        <item name="android:minHeight">30dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:background">@color/transparent</item>
+    </style>
 </resources>

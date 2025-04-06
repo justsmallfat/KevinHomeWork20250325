@@ -37,8 +37,6 @@ class StockDayViewModel : AbstractViewModel() {
                 } else {
                     all
                 }
-            }.filter {
-                it.Code == "1101"
             }
 
             allStockDayDetails.postValue(mergedList)
