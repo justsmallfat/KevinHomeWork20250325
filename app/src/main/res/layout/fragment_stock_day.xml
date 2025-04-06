@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragment.StockDayFragment">
+    tools:context=".ui.fragment.StockDayFragment"
+    style="@style/Fragment_Layout">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent">
-        <ImageButton
+        <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/filterButton"
             android:layout_width="@dimen/image_button_size"
             android:layout_height="@dimen/image_button_size"

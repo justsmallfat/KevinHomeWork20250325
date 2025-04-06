@@ -4,4 +4,16 @@
         <item name="android:paddingVertical" >@dimen/list_vertical_padding</item>
         <item name="android:paddingHorizontal" >@dimen/list_horizontal_padding</item>
     </style>
+
+
+    <style name="Fragment_Layout">
+        <item name="android:paddingVertical" >@dimen/fragment_vertical_padding</item>
+        <item name="android:paddingHorizontal" >@dimen/fragment_horizontal_padding</item>
+    </style>
+
+    <style name="Dialog_Main_Layout">
+        <item name="android:minHeight">120dp</item>
+        <item name="android:layout_marginTop" >@dimen/dialog_main_layout_top_margin</item>
+        <item name="android:layout_marginHorizontal" >@dimen/dialog_main_layout_horizontal_margin</item>
+    </style>
 </resources>

@@ -28,6 +28,9 @@ class StockDayDetailAdapter(
         binding: RecycleItemStockDayDetailBinding
     ) : BaseViewHolder<StockDayAll, RecycleItemStockDayDetailBinding>(binding) {
         override fun bind(item: StockDayAll, onItemClick: (StockDayAll) -> Unit) {
+            binding.root.setOnClickListener {
+                onItemClick(item)
+            }
             binding.codeTextView.text = item.Code
             binding.nameTextView.text = item.Name
 
@@ -58,11 +61,11 @@ class StockDayDetailAdapter(
             binding.tradeValueTitleValueView.setValueText(item.TradeValue)
         }
 
-        fun getCompAVGColor(prics: String, avg: String): Int {
+        fun getCompAVGColor(prics: String, avg: String?): Int {
             var color = ContextCompat.getColor(binding.root.context, R.color.text_color)
             if (StringUtils.checkStringDouble(prics) && StringUtils.checkStringDouble(avg)) {
                 val pricsDouble = prics.toDouble()
-                val avgDouble = avg.toDouble()
+                val avgDouble = avg!!.toDouble()
                 if (pricsDouble > avgDouble) {
                     color = ContextCompat.getColor(binding.root.context, R.color.stock_red)
                 } else if (pricsDouble < avgDouble) {

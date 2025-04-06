@@ -2,6 +2,7 @@ package com.smallfat5566.kevinhomework20250325.ui.fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ import com.smallfat5566.kevinhomework20250325.R
 import com.smallfat5566.kevinhomework20250325.databinding.FragmentStockDayBinding
 import com.smallfat5566.kevinhomework20250325.ui.adapter.StockDayDetailAdapter
 import com.smallfat5566.kevinhomework20250325.ui.adapter.StockMetricsAdapter
+import com.smallfat5566.kevinhomework20250325.ui.dialog.StockMetricsDialog
 
 class StockDayFragment : AbstractFragment() {
 
@@ -40,7 +42,8 @@ class StockDayFragment : AbstractFragment() {
 
 
         val adapter = StockDayDetailAdapter { item ->
-            Toast.makeText(fragContext, "點擊了: ${item.Name}", Toast.LENGTH_LONG).show()
+
+            viewModel.fetchStockMetrics(fragContext, item.Code)
         }
 
         binding.stockDayRecyclerView.layoutManager = LinearLayoutManager(fragContext)
@@ -50,11 +53,20 @@ class StockDayFragment : AbstractFragment() {
             adapter.submitList(stockDayDetails)
         }
 
+        viewModel.selectStockMetrics.observe(viewLifecycleOwner) { stockMetrics ->
+            Log.d(TAG, "stockMetrics : ${stockMetrics}")
+            if (stockMetrics != null){
+                val dialog = StockMetricsDialog(fragContext, stockMetrics)
+                dialog.show(parentFragmentManager, "MyInputDialog")
+            }
+        }
+
+
         binding.filterButton.setOnClickListener {
             showOrderBottomSheet()
         }
 
-        viewModel.fetchStockMetrics(fragContext)
+        viewModel.fetchStockDay(fragContext)
     }
 
     fun showOrderBottomSheet() {

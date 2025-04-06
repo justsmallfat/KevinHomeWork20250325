@@ -29,5 +29,6 @@ abstract class BaseListAdapter<T, VB : ViewBinding>(
 
     override fun onBindViewHolder(holder: BaseViewHolder<T, VB>, position: Int) {
         holder.bind(getItem(position), onItemClick)
+
     }
 }

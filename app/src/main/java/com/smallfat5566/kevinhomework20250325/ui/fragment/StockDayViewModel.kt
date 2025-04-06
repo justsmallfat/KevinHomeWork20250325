@@ -12,6 +12,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.smallfat5566.kevinhomework20250325.models.StockDayAll
 import com.smallfat5566.kevinhomework20250325.models.StockMetrics
 import com.smallfat5566.kevinhomework20250325.network.ExchangeReportWebService
+import com.smallfat5566.kevinhomework20250325.utils.SimpleErrorHandleUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -19,15 +20,16 @@ class StockDayViewModel : AbstractViewModel() {
     val allStockDayDetails = MutableLiveData<List<StockDayAll>>().apply {
         value = ArrayList<StockDayAll>()
     }
+    var selectStockMetrics = MutableLiveData<StockMetrics?>().apply {
+        value = null
+    }
 
-    fun fetchStockMetrics(context: Context) {
+    fun fetchStockDay(context: Context) {
         viewModelScope.launch(Dispatchers.IO) {
             val exchangeReportAPIService = ExchangeReportWebService(context, true)
             val tempStockDayAll = exchangeReportAPIService.getStockDayAll(context)
             val tempStockDayAvg = exchangeReportAPIService.getStockDayAvg(context)
             val avgMap = tempStockDayAvg.associateBy { it.Code }
-
-            Log.d(TAG,"avgMap : ${avgMap}")
 
             val mergedList = tempStockDayAll.map { all ->
                 val avg = avgMap[all.Code]
@@ -36,9 +38,10 @@ class StockDayViewModel : AbstractViewModel() {
                 } else {
                     all
                 }
+            }.filter {
+                it.Code == "1101"
             }
 
-            Log.d(TAG,"mergedList : ${mergedList.get(0)}")
             allStockDayDetails.postValue(mergedList)
         }
     }
@@ -53,4 +56,18 @@ class StockDayViewModel : AbstractViewModel() {
         }
     }
 
+    fun fetchStockMetrics(context: Context, inputCode: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val exchangeReportAPIService = ExchangeReportWebService(context, true)
+            val tempStockMetricsList = exchangeReportAPIService.getStockMetricsALL(context)
+            val stockMetrics = tempStockMetricsList.find { sm ->
+                sm.Code == inputCode
+            }
+            if (stockMetrics != null){
+                selectStockMetrics.postValue(stockMetrics)
+            }else{
+                SimpleErrorHandleUtils.errorSampleHandle(context, "無本益比、殖利率及股價淨值比資訊")
+            }
+        }
+    }
 }
