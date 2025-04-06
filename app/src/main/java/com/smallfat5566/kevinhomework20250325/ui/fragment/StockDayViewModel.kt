@@ -14,6 +14,7 @@ import com.smallfat5566.kevinhomework20250325.models.StockMetrics
 import com.smallfat5566.kevinhomework20250325.network.ExchangeReportWebService
 import com.smallfat5566.kevinhomework20250325.utils.SimpleErrorHandleUtils
 import com.smallfat5566.kevinhomework20250325.utils.SingleLiveEvent
+import com.smallfat5566.kevinhomework20250325.utils.StringUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -22,6 +23,7 @@ class StockDayViewModel : AbstractViewModel() {
         value = ArrayList<StockDayAll>()
     }
     var selectStockMetrics = SingleLiveEvent<StockMetrics?>()
+    var filterText = MutableLiveData<String?>()
 
     fun fetchStockDay(context: Context) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -30,12 +32,18 @@ class StockDayViewModel : AbstractViewModel() {
             val tempStockDayAvg = exchangeReportAPIService.getStockDayAvg(context)
             val avgMap = tempStockDayAvg.associateBy { it.Code }
 
-            val mergedList = tempStockDayAll.map { all ->
+            var mergedList = tempStockDayAll.map { all ->
                 val avg = avgMap[all.Code]
                 if (avg != null) {
                     all.copy(MonthlyAveragePrice = avg.MonthlyAveragePrice)
                 } else {
                     all
+                }
+            }
+
+            if (StringUtils.checkStringHasValue(filterText.value)){
+                mergedList = mergedList.filter {
+                    it.Code.contains(filterText.value.toString())
                 }
             }
 
@@ -51,6 +59,10 @@ class StockDayViewModel : AbstractViewModel() {
         allStockDayDetails.value = allStockDayDetails.value?.sortedBy {
             it.Code
         }
+    }
+    fun filterByCode(context: Context, filterCode: String) {
+        filterText.value = filterCode
+        fetchStockDay(context)
     }
 
     fun fetchStockMetrics(context: Context, inputCode: String) {
@@ -69,7 +81,4 @@ class StockDayViewModel : AbstractViewModel() {
         }
     }
 
-    fun showStockMetrics(metrics: StockMetrics) {
-        selectStockMetrics.value = metrics
-    }
 }

@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
+import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -14,6 +16,7 @@ import com.smallfat5566.kevinhomework20250325.R
 import com.smallfat5566.kevinhomework20250325.databinding.FragmentStockDayBinding
 import com.smallfat5566.kevinhomework20250325.ui.adapter.StockDayDetailAdapter
 import com.smallfat5566.kevinhomework20250325.ui.dialog.StockMetricsDialog
+import com.smallfat5566.kevinhomework20250325.utils.StringUtils
 
 class StockDayFragment : AbstractFragment() {
 
@@ -49,6 +52,9 @@ class StockDayFragment : AbstractFragment() {
             adapter.submitList(stockDayDetails)
         }
 
+        viewModel.filterText.observe(viewLifecycleOwner) { filterText ->
+
+        }
         viewModel.selectStockMetrics.observe(viewLifecycleOwner) { stockMetrics ->
             Log.d(TAG, "stockMetrics : ${stockMetrics}")
             Log.d(TAG, "fragContext : ${fragContext}")
@@ -61,14 +67,15 @@ class StockDayFragment : AbstractFragment() {
 
 
         binding.filterButton.setOnClickListener {
-            showOrderBottomSheet()
+            val text = viewModel.filterText.value
+            showOrderBottomSheet(text)
         }
 
         viewModel.fetchStockDay(fragContext)
     }
 
 
-    fun showOrderBottomSheet() {
+    fun showOrderBottomSheet(filterText: String?) {
         // 創建 Bottom Sheet Dialog
         val dialog = BottomSheetDialog(fragContext)
         val view = layoutInflater.inflate(R.layout.bottom_sheet_stock_day_detail_layout, null)
@@ -91,6 +98,15 @@ class StockDayFragment : AbstractFragment() {
         sortAscButton.setOnClickListener {
             viewModel.sortAsc()
             dialog.dismiss() // 關閉 Bottom Sheet
+        }
+
+        // 設置搜尋
+        val filterEditText = view.findViewById<EditText>(R.id.filterEditText)
+        if (StringUtils.checkStringHasValue(filterText)){
+            filterEditText.setText(filterText)
+        }
+        filterEditText.doOnTextChanged { text, start, before, count ->
+            viewModel.filterByCode(fragContext, text.toString())
         }
 
         // 顯示 Bottom Sheet
