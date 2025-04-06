@@ -16,8 +16,6 @@ class StockMetricsDialog(
     private var _binding: DialogStockMetricsBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: StockMetricsDialogViewModel by viewModels()
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -27,6 +25,10 @@ class StockMetricsDialog(
         _binding = DialogStockMetricsBinding.inflate(inflater, container, false)
         binding.codeTextView.text = stockMetrics.Code
         binding.nameTextView.text = stockMetrics.Name
+
+        binding.priceEarningsTitleValueView.setValueText(stockMetrics.PEratio)
+        binding.dividendYieldTitleValueView.setValueText(stockMetrics.DividendYield)
+        binding.priceBookTitleValueView.setValueText(stockMetrics.PEratio)
 
 
 

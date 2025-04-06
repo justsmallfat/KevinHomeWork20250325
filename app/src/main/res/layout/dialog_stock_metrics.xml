@@ -34,5 +34,30 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/nameTextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:orientation="vertical">
+            <com.smallfat5566.kevinhomework20250325.ui.view.RatioDataView
+                android:id="@+id/priceEarningsTitleValueView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="33"
+                app:nameText="本益比"/>
+            <com.smallfat5566.kevinhomework20250325.ui.view.RatioDataView
+                android:id="@+id/dividendYieldTitleValueView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="33"
+                app:nameText="殖利率"/>
+            <com.smallfat5566.kevinhomework20250325.ui.view.RatioDataView
+                android:id="@+id/priceBookTitleValueView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="33"
+                app:nameText="股價淨值比"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

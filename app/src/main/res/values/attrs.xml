@@ -14,4 +14,9 @@
         <attr name="nameText"/>
         <attr name="valueText"/>
     </declare-styleable>
+
+    <declare-styleable name="RatioDataView">
+        <attr name="nameText"/>
+        <attr name="valueText"/>
+    </declare-styleable>
 </resources>
