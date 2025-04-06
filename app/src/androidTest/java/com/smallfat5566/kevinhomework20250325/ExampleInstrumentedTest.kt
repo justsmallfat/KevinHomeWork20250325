@@ -2,6 +2,7 @@ package com.smallfat5566.kevinhomework20250325
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.platform.app.InstrumentationRegistry
@@ -40,12 +41,23 @@ class ExampleInstrumentedTest {
         Thread.sleep(1000)
         onView(withId(R.id.sortDescButton))
             .perform(click())
-        Thread.sleep(2000)
+        Thread.sleep(3000)
+
         onView(withId(R.id.filterButton))
             .perform(click())
         Thread.sleep(1000)
         onView(withId(R.id.sortAscButton))
             .perform(click())
+        Thread.sleep(3000)
+
+        onView(withId(R.id.filterButton))
+            .perform(click())
+        Thread.sleep(1000)
+        onView(withId(R.id.filterEditText))
+            .perform(typeText("110"))
+        onView(withId(R.id.closeButton))
+            .perform(click())
+
         Thread.sleep(5000)
     }
 }
