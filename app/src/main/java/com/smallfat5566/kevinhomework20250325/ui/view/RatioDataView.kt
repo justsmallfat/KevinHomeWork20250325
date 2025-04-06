@@ -53,8 +53,10 @@ class RatioDataView @JvmOverloads constructor(
     fun setValueTextWidth() {
         binding.root.post {
             val parentWidth = binding.root.width
-            val childWidth = parentWidth / 2 // 平均分配
-            binding.tvValue.width = childWidth
+            val tvNameWidth = binding.tvName.width
+            // 6 margin
+            val tvValueWidth = parentWidth - tvNameWidth - 8
+            binding.tvValue.width = tvValueWidth
             binding.tvValue.ellipsize = TextUtils.TruncateAt.END
         }
     }

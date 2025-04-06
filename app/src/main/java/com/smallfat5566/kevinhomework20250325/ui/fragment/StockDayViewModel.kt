@@ -13,6 +13,7 @@ import com.smallfat5566.kevinhomework20250325.models.StockDayAll
 import com.smallfat5566.kevinhomework20250325.models.StockMetrics
 import com.smallfat5566.kevinhomework20250325.network.ExchangeReportWebService
 import com.smallfat5566.kevinhomework20250325.utils.SimpleErrorHandleUtils
+import com.smallfat5566.kevinhomework20250325.utils.SingleLiveEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -20,9 +21,7 @@ class StockDayViewModel : AbstractViewModel() {
     val allStockDayDetails = MutableLiveData<List<StockDayAll>>().apply {
         value = ArrayList<StockDayAll>()
     }
-    var selectStockMetrics = MutableLiveData<StockMetrics?>().apply {
-        value = null
-    }
+    var selectStockMetrics = SingleLiveEvent<StockMetrics?>()
 
     fun fetchStockDay(context: Context) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -64,10 +63,15 @@ class StockDayViewModel : AbstractViewModel() {
                 sm.Code == inputCode
             }
             if (stockMetrics != null){
+
                 selectStockMetrics.postValue(stockMetrics)
             }else{
                 SimpleErrorHandleUtils.errorSampleHandle(context, "無本益比、殖利率及股價淨值比資訊")
             }
         }
+    }
+
+    fun showStockMetrics(metrics: StockMetrics) {
+        selectStockMetrics.value = metrics
     }
 }

@@ -14,15 +14,12 @@ var Dialog_Layout_normal_Rate = 0.85
 var Dialog_Layout_big_Rate = 1.0
 
 abstract class AbstractDialog(
-    var dialogContext: Context,
     val layoutRate: Double = Dialog_Layout_normal_Rate
 ) : DialogFragment(){
     var TAG = this.javaClass.name
-    lateinit var myApplication : MyApplication
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        myApplication = dialogContext.applicationContext as MyApplication
     }
 
     override fun onStart() {
@@ -31,7 +28,9 @@ abstract class AbstractDialog(
             val metrics = Resources.getSystem().displayMetrics
             val width = (metrics.widthPixels * layoutRate).toInt()
             val height = (metrics.heightPixels * layoutRate).toInt()
+//            val height = width
             window.setLayout(width, height)
         }
     }
+
 }
