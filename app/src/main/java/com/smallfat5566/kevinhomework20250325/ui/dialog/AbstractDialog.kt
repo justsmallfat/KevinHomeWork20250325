@@ -17,9 +17,11 @@ abstract class AbstractDialog(
     val layoutRate: Double = Dialog_Layout_normal_Rate
 ) : DialogFragment(){
     var TAG = this.javaClass.name
+    lateinit var dialogContext: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        dialogContext = requireActivity()
     }
 
     override fun onStart() {

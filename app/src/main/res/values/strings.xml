@@ -30,6 +30,7 @@
     <string name="error_message_phone_num_format">手機格式錯誤</string>
     <string name="error_message_no_data">查無資料</string>
     <string name="error_message_no_more_data">查無更多資料</string>
+    <string name="error_message_data_empty">%1$s 資料為空</string>
     <string name="error_message_TODO">沒道理錯誤</string>
     <string name="error_message_Json_format">Json 解析錯誤</string>
     <string name="error_message_url_decode">url 解析錯誤</string>

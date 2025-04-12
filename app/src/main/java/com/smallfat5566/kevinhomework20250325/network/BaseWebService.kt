@@ -37,6 +37,7 @@ abstract class BaseWebService(
     }
 
     val okHttpClient = OkHttpClient.Builder()
+//        .addInterceptor(loggingInterceptor) // 記錄請求與回應
         .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS) // 設定連線超時
         .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
         .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)

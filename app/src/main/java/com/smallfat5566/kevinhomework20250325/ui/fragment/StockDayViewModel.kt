@@ -1,14 +1,9 @@
 package com.smallfat5566.kevinhomework20250325.ui.fragment
 
 import android.content.Context
-import android.os.Build
-import android.util.Log
-import androidx.annotation.RequiresExtension
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.smallfat5566.kevinhomework20250325.R
 import com.smallfat5566.kevinhomework20250325.models.StockDayAll
 import com.smallfat5566.kevinhomework20250325.models.StockMetrics
 import com.smallfat5566.kevinhomework20250325.network.ExchangeReportWebService
@@ -76,7 +71,8 @@ class StockDayViewModel : AbstractViewModel() {
 
                 selectStockMetrics.postValue(stockMetrics)
             }else{
-                SimpleErrorHandleUtils.errorSampleHandle(context, "無本益比、殖利率及股價淨值比資訊")
+                val message = context.resources.getString(R.string.error_message_no_data)
+                SimpleErrorHandleUtils.errorSampleHandle(context, message)
             }
         }
     }

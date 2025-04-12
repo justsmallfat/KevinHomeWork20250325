@@ -26,6 +26,7 @@
     <string name="error_message_format">Invalid input: %1$s</string>
     <string name="error_message_phone_num_format">Invalid phone number format</string>
     <string name="error_message_no_data">No data found</string>
+    <string name="error_message_data_empty">%1$s data is empty</string>
     <string name="error_message_no_more_data">No more data</string>
     <string name="error_message_TODO">Unexpected error</string>
     <string name="error_message_Json_format">JSON parsing error</string>

@@ -61,8 +61,6 @@ class StockDayFragment : AbstractFragment() {
             binding.filterTextView.text = errorMsg
         }
         viewModel.selectStockMetrics.observe(viewLifecycleOwner) { stockMetrics ->
-            Log.d(TAG, "stockMetrics : ${stockMetrics}")
-            Log.d(TAG, "fragContext : ${fragContext}")
             if (stockMetrics != null){
                 val dialog = StockMetricsDialog.newInstance(stockMetrics)
                 dialog.show(parentFragmentManager, "MyInputDialog")

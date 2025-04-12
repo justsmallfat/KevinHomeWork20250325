@@ -8,6 +8,7 @@ import retrofit2.http.GET
 private const val prefix = "/v1/exchangeReport/"
 interface ExchangeReportAPIService : ApiService{
     @GET(prefix + "BWIBBU_ALL")
+//    @GET(prefix + "STOCK_DAY_AVG_ALL")
     suspend fun getAllStockMetrics(): List<StockMetrics>
     @GET(prefix + "STOCK_DAY_AVG_ALL")
     suspend fun getAllStockDayAvg(): List<StockDayAvg>

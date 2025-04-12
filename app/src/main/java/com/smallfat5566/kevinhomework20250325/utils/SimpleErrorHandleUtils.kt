@@ -32,6 +32,11 @@ class SimpleErrorHandleUtils {
         @JvmStatic fun errorSampleHandle(context: Context, message : String){
             messageHandle(context, message)
         }
+
+//        @JvmStatic fun dataErrorSampleHandle(context: Context){
+//            context.resources.getString(R.string.error_message_no_data)
+//            messageHandle(context, message)
+//        }
         /**
          * response Error
          */
