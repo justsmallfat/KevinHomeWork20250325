@@ -46,19 +46,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="33"
-                app:nameText="本益比"/>
+                app:nameText="@string/price_earnings"/>
             <com.smallfat5566.kevinhomework20250325.ui.view.RatioDataView
                 android:id="@+id/dividendYieldTitleValueView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="33"
-                app:nameText="殖利率(%)"/>
+                app:nameText="@string/dividend_yield"/>
             <com.smallfat5566.kevinhomework20250325.ui.view.RatioDataView
                 android:id="@+id/priceBookTitleValueView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="33"
-                app:nameText="股價淨值比"/>
+                app:nameText="@string/price_book"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

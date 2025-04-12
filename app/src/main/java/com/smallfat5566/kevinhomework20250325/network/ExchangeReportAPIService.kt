@@ -14,10 +14,4 @@ interface ExchangeReportAPIService : ApiService{
     @GET(prefix + "STOCK_DAY_ALL")
     suspend fun getAllStockDayAll(): List<StockDayAll>
 
-//    suspend fun initService(): ApiService = withContext(Dispatchers.IO) {
-//
-//        // 設定 Retrofit
-//
-//        return@withContext apiService
-//    }
 }

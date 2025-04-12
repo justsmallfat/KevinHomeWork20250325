@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+
+    <!-- 主色 -->
+    <color name="primary_color">#FBBF24</color>
+    <color name="primary_variant">#D97706</color>
+    <!-- 輔助色 -->
+    <color name="accent_color">#1E3A8A</color>
+    <color name="accent_variant">#172554</color>
+
     <!-- 深色模式背景 -->
     <color name="background_color">#121212</color>   <!-- 接近黑色的深灰 -->
     <!-- 深色模式文字 -->

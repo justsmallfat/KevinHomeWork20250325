@@ -27,7 +27,7 @@ class StockDayViewModel : AbstractViewModel() {
 
     fun fetchStockDay(context: Context) {
         viewModelScope.launch(Dispatchers.IO) {
-            val exchangeReportAPIService = ExchangeReportWebService(context, true)
+            val exchangeReportAPIService = ExchangeReportWebService(context, viewModelScope, true)
             val tempStockDayAll = exchangeReportAPIService.getStockDayAll(context)
             val tempStockDayAvg = exchangeReportAPIService.getStockDayAvg(context)
             val avgMap = tempStockDayAvg.associateBy { it.Code }
@@ -67,7 +67,7 @@ class StockDayViewModel : AbstractViewModel() {
 
     fun fetchStockMetrics(context: Context, inputCode: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val exchangeReportAPIService = ExchangeReportWebService(context, true)
+            val exchangeReportAPIService = ExchangeReportWebService(context, viewModelScope, true)
             val tempStockMetricsList = exchangeReportAPIService.getStockMetricsALL(context)
             val stockMetrics = tempStockMetricsList.find { sm ->
                 sm.Code == inputCode

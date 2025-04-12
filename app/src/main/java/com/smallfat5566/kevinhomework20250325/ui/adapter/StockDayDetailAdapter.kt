@@ -53,7 +53,7 @@ class StockDayDetailAdapter(
                 binding.changeTitleValueView.setValueColor(color)
             }
             binding.changeTitleValueView.setValueText(item.Change)
-            binding.MonthlyAveragePriceTitleValueView.setValueText(item.MonthlyAveragePrice)
+            binding.monthlyAveragePriceTitleValueView.setValueText(item.MonthlyAveragePrice)
 //            binding
 
             binding.transactionTitleValueView.setValueText(item.Transaction)

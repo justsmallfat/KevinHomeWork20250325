@@ -16,7 +16,7 @@ class StockDayAvgViewModel : ViewModel() {
 
     fun fetchStockMetrics(context: Context) {
         viewModelScope.launch(Dispatchers.IO) {
-            val exchangeReportAPIService = ExchangeReportWebService(context, true)
+            val exchangeReportAPIService = ExchangeReportWebService(context, viewModelScope, true)
             allStockDayAvgs.postValue(exchangeReportAPIService.getStockDayAvg(context))
         }
     }

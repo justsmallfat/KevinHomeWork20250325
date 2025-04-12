@@ -7,4 +7,27 @@
     <string name="sort_by_stock_code_asc">Sort by stock code asc</string>
     <string name="sort_by_stock_code_desc">Sort by stock code desc</string>
     <string name="please_input_stock_code">Please enter stock code</string>
+
+    <string name="price_earnings">Price Earnings</string>
+    <string name="dividend_yield">Dividend Yield</string>
+    <string name="price_book">Price Book</string>
+
+    <string name="opening_price">Opening Price</string>
+    <string name="closing_price">Closing Price</string>
+    <string name="highest_price">Highest Price</string>
+    <string name="lowest_price">Lowest Price</string>
+    <string name="change">Price Change</string>
+    <string name="monthly_average">Monthly Average Price</string>
+
+    <string name="loading">Loading</string>
+    <string name="error_message_empty">%1$s is empty</string>
+    <string name="error_message_format">Invalid input: %1$s</string>
+    <string name="error_message_phone_num_format">Invalid phone number format</string>
+    <string name="error_message_no_data">No data found</string>
+    <string name="error_message_no_more_data">No more data</string>
+    <string name="error_message_TODO">Unexpected error</string>
+    <string name="error_message_Json_format">JSON parsing error</string>
+    <string name="error_message_url_decode">URL decoding error</string>
+    <string name="error_message_no_network">No network connection</string>
+    <string name="error_message_unknown">Unknown error</string>
 </resources>

@@ -23,7 +23,7 @@ class StockMetricsViewModel : AbstractViewModel() {
 
     fun fetchStockMetrics(context: Context) {
         viewModelScope.launch(Dispatchers.IO) {
-            val exchangeReportAPIService = ExchangeReportWebService(context, true)
+            val exchangeReportAPIService = ExchangeReportWebService(context, viewModelScope, true)
             _allStockMetrics.postValue(exchangeReportAPIService.getStockMetricsALL(context))
         }
     }
