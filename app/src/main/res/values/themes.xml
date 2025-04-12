@@ -15,8 +15,10 @@
         <item name="android:windowBackground">@color/background_color</item>
         <item name="android:textColor">@color/text_color</item>
         <!-- 狀態欄和導航欄 -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <item name="android:navigationBarColor">@color/background_color</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
         <!-- 高亮效果 -->
         <item name="colorControlHighlight">@color/highlight_color</item>
 
