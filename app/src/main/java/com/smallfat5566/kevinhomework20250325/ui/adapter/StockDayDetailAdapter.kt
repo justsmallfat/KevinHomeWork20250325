@@ -1,9 +1,7 @@
 package com.smallfat5566.kevinhomework20250325.ui.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.compose.ui.graphics.Color
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import com.smallfat5566.kevinhomework20250325.R

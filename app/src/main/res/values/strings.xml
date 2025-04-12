@@ -7,7 +7,7 @@
     <string name="close">關閉</string>
     <string name="sort_by_stock_code_asc">依股票代號降序</string>
     <string name="sort_by_stock_code_desc">依股票代號升序</string>
-    <string name="please_input_stock_code">請輸入股票代號</string>
+    <string name="please_input_keyword">請輸入關鍵字</string>
 
 
     <string name="price_earnings">本益比</string>
@@ -21,6 +21,7 @@
     <string name="change">漲跌價差</string>
     <string name="monthly_average">月平均價</string>
 
+    <string name="keyword_is">條件：%1$s</string>
 
 
     <string name="loading">讀取中</string>

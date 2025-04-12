@@ -47,19 +47,23 @@ class StockDayFragment : AbstractFragment() {
 
         binding.stockDayRecyclerView.layoutManager = LinearLayoutManager(fragContext)
         binding.stockDayRecyclerView.adapter = adapter
+        binding.stockDaySwipeRefreshLayout.setOnRefreshListener {
+            viewModel.fetchStockDay(fragContext)
+            binding.stockDaySwipeRefreshLayout.setRefreshing(false);
+        }
 
         viewModel.allStockDayDetails.observe(viewLifecycleOwner) { stockDayDetails ->
             adapter.submitList(stockDayDetails)
         }
 
         viewModel.filterText.observe(viewLifecycleOwner) { filterText ->
-
+            val errorMsg = String.format(resources.getString(R.string.keyword_is), filterText)
+            binding.filterTextView.text = errorMsg
         }
         viewModel.selectStockMetrics.observe(viewLifecycleOwner) { stockMetrics ->
             Log.d(TAG, "stockMetrics : ${stockMetrics}")
             Log.d(TAG, "fragContext : ${fragContext}")
             if (stockMetrics != null){
-
                 val dialog = StockMetricsDialog.newInstance(stockMetrics)
                 dialog.show(parentFragmentManager, "MyInputDialog")
             }

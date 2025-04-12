@@ -13,7 +13,6 @@ class ProgressDialogUtil {
         private val lock = Any()
 
         fun showProgressDialog(context: Context) {
-            Log.e("ProgressDialogUtil","show")
             synchronized(lock) {
                 loadingCounter++
                 if (loadingCounter == 1) {
@@ -29,7 +28,6 @@ class ProgressDialogUtil {
          * 隱藏耗時對話方塊
          */
         fun dismiss() {
-            Log.e("ProgressDialogUtil","dismiss")
             synchronized(lock) {
                 loadingCounter--
                 if (loadingCounter <= 0) {

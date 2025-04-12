@@ -43,7 +43,7 @@ class StockDayViewModel : AbstractViewModel() {
 
             if (StringUtils.checkStringHasValue(filterText.value)){
                 mergedList = mergedList.filter {
-                    it.Code.contains(filterText.value.toString())
+                    it.Code.contains(filterText.value.toString()) or it.Name.contains(filterText.value.toString())
                 }
             }
 
@@ -60,7 +60,7 @@ class StockDayViewModel : AbstractViewModel() {
             it.Code
         }
     }
-    fun filterByCode(context: Context, filterCode: String) {
+    fun filterByCode(context: Context, filterCode: String?) {
         filterText.value = filterCode
         fetchStockDay(context)
     }
